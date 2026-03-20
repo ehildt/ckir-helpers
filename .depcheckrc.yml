@@ -1,0 +1,6 @@
+skip-missing: true
+ignores:
+  - "@changesets/cli"
+  - "@vitest/coverage-v8"
+  - "dependency-cruiser"
+  - rimraf
