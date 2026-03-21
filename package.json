@@ -6,7 +6,6 @@
   "type": "module",
   "exports": {
     ".": null,
-    "./dist/*": null,
     "./bootstrap": {
       "import": "./dist/bootstrap/index.mjs",
       "types": "./dist/bootstrap/index.d.ts"
