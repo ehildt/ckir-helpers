@@ -13,9 +13,9 @@ A shared utility library providing helper functions for the CKIR project.
 <!-- DEPBADGE:START -->
 <div align="center">
 
-![github](https://img.shields.io/github/release/ehildt/ckir--helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
-![github](https://img.shields.io/github/stars/ehildt/ckir--helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
-![github](https://img.shields.io/github/license/ehildt/ckir--helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
+![github](https://img.shields.io/github/release/ehildt/ckir-helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
+![github](https://img.shields.io/github/stars/ehildt/ckir-helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
+![github](https://img.shields.io/github/license/ehildt/ckir-helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
 [![Framework](https://img.shields.io/badge/Framework-NestJS-e0234e?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=b4cf2a&logoWidth=40&style=for-the-badge)](https://github.com/nestjs/nest)
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-Swagger-e0234e?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=b4cf2a&logoWidth=40&style=for-the-badge)](https://github.com/nestjs/swagger)
 [![Validation](https://img.shields.io/badge/Validation-Joi-048d04?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=b4cf2a&logoWidth=40&style=for-the-badge)](https://github.com/sideway/joi)
