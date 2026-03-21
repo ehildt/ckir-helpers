@@ -7,28 +7,28 @@
   "exports": {
     ".": null,
     "./bootstrap": {
-      "import": "./dist/bootstrap/index.mjs",
-      "types": "./dist/bootstrap/index.d.ts"
+      "types": "./dist/bootstrap/index.d.ts",
+      "import": "./dist/bootstrap/index.mjs"
     },
     "./get-boolean-env": {
-      "import": "./dist/get-boolean-env/index.mjs",
-      "types": "./dist/get-boolean-env/index.d.ts"
+      "types": "./dist/get-boolean-env/index.d.ts",
+      "import": "./dist/get-boolean-env/index.mjs"
     },
     "./get-number-env": {
-      "import": "./dist/get-number-env/index.mjs",
-      "types": "./dist/get-number-env/index.d.ts"
+      "types": "./dist/get-number-env/index.d.ts",
+      "import": "./dist/get-number-env/index.mjs"
     },
     "./hash-payload": {
-      "import": "./dist/hash-payload/index.mjs",
-      "types": "./dist/hash-payload/index.d.ts"
+      "types": "./dist/hash-payload/index.d.ts",
+      "import": "./dist/hash-payload/index.mjs"
     },
     "./object-io": {
-      "import": "./dist/object-io/index.mjs",
-      "types": "./dist/object-io/index.d.ts"
+      "types": "./dist/object-io/index.d.ts",
+      "import": "./dist/object-io/index.mjs"
     },
     "./text-to-lines": {
-      "import": "./dist/text-to-lines/index.mjs",
-      "types": "./dist/text-to-lines/index.d.ts"
+      "types": "./dist/text-to-lines/index.d.ts",
+      "import": "./dist/text-to-lines/index.mjs"
     }
   },
   "main": "dist/bootstrap/index.mjs",
