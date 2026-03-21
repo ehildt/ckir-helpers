@@ -1,5 +1,11 @@
 # @ehildt/ckir-helpers
 
+## 1.1.0
+
+### Minor Changes
+
+- 85631ed: Enforce explicit import paths by blocking root and dist imports
+
 ## 1.0.1
 
 ### Patch Changes
