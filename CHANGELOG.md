@@ -1,5 +1,15 @@
 # @ehildt/ckir-helpers
 
+## 1.2.0
+
+### Minor Changes
+
+- aac37f0: Enforce explicit import paths by blocking root and dist imports
+
+### Patch Changes
+
+- aac37f0: fixed explicit exporting path
+
 ## 1.1.0
 
 ### Minor Changes
