@@ -2,9 +2,10 @@
 
 # @ehildt/ckir-helpers
 
-<br>
+A shared utility library providing helper functions for the CKIR project. 
 
-A shared utility library providing helper functions for the CKIR project.
+`This library is **ESM-only** and does not support CommonJS.`   
+`Your project must use ES modules.`
 
 </div>
 
@@ -13,18 +14,23 @@ A shared utility library providing helper functions for the CKIR project.
 <!-- DEPBADGE:START -->
 <div align="center">
 
-![github](https://img.shields.io/github/release/ehildt/ckir-helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
-![github](https://img.shields.io/github/stars/ehildt/ckir-helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
-![github](https://img.shields.io/github/license/ehildt/ckir-helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
-[![Framework](https://img.shields.io/badge/Framework-NestJS-e0234e?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=b4cf2a&logoWidth=40&style=for-the-badge)](https://github.com/nestjs/nest)
-[![OpenAPI](https://img.shields.io/badge/OpenAPI-Swagger-e0234e?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=b4cf2a&logoWidth=40&style=for-the-badge)](https://github.com/nestjs/swagger)
-[![Validation](https://img.shields.io/badge/Validation-Joi-048d04?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=b4cf2a&logoWidth=40&style=for-the-badge)](https://github.com/sideway/joi)
+
+
+# StatusBadges
+
+![github](https://img.shields.io/github/release/ehildt/ckir--helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
+![github](https://img.shields.io/github/stars/ehildt/ckir--helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
+![github](https://img.shields.io/github/license/ehildt/ckir--helpers?labelColor=333&style=for-the-badge&cacheSeconds=3600&color=b16425&logo=github&logoColor=b16425&logoWidth=40&branch=main)
 
 </div>
 
 <br>
 
 <div align="center">
+
+
+
+# DevDependencies
 
 ![@changesets/cli](https://img.shields.io/badge/_changesets_cli-v2.30.0-82ba21.svg?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=82ba21&logoWidth=40&style=flat-square)
 ![@eslint/js](https://img.shields.io/badge/_eslint_js-v10.0.1-7a23a9.svg?labelColor=333&cacheSeconds=3600&logo=eslint&logoColor=7a23a9&logoWidth=40&style=flat-square)
@@ -53,9 +59,22 @@ A shared utility library providing helper functions for the CKIR project.
 
 <div align="center">
 
-[![@nestjs/common](https://img.shields.io/badge/_nestjs_common-v11.1.17-88de2b.svg?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=88de2b&logoWidth=40&style=for-the-badge)](https://github.com/nestjs/nest)
-[![@nestjs/swagger](https://img.shields.io/badge/_nestjs_swagger-v11.2.6-225fd8.svg?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=225fd8&logoWidth=40&style=for-the-badge)](https://github.com/nestjs/swagger)
-[![joi](https://img.shields.io/badge/joi-v18.0.2-9f1eb3.svg?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=9f1eb3&logoWidth=40&style=for-the-badge)](https://github.com/sideway/joi)
+
+
+# PeerDependencies
+
+[![@nestjs/common](https://img.shields.io/badge/_nestjs_common-v11.1.17-88de2b.svg?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=88de2b&logoWidth=40&style=flat)](https://github.com/nestjs/nest)
+[![@nestjs/swagger](https://img.shields.io/badge/_nestjs_swagger-v11.2.6-225fd8.svg?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=225fd8&logoWidth=40&style=flat)](https://github.com/nestjs/swagger)
+[![joi](https://img.shields.io/badge/joi-v18.0.2-9f1eb3.svg?labelColor=333&cacheSeconds=3600&logo=npm&logoColor=9f1eb3&logoWidth=40&style=flat)](https://github.com/sideway/joi)
 
 </div>
 <!-- DEPBADGE:END -->
+
+<br>
+
+<div align="center">
+
+[E-MAIL](mailto:eugen.hildt@gmail.com) &nbsp;—&nbsp; [WIKI](https://github.com/ehildt/ckir-helpers/wiki) &nbsp;—&nbsp; [ISSUES](https://github.com/ehildt/ckir-helpers/issues) &nbsp;—&nbsp; [DONATE](https://github.com/sponsors/ehildt)
+
+</div>
+<br>

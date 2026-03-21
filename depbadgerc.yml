@@ -1,4 +1,4 @@
-integrity: 8916fa9919ba309f26a4b532b5db73b181c60a963ef4bc17c6dda71cdf2c7b8a
+integrity: 333d4e019cac392bca1d57f26e2a4cd91d3244e80d50eb4e5f4c7c95248895f2
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ehildt/depbadge/refs/heads/main/depbadgerc.schema.json
 
 target: README.md
@@ -29,8 +29,14 @@ statusBadgesStyle: &STATUS_BADGES_STYLE
   cacheSeconds: 3600
 
 peerDependencies:
-  layout: *DEPENDENCIES_LAYOUT
-  badgeStyle: *DEPENDENCIES_STYLE
+  layout: 
+    <<: *DEPENDENCIES_LAYOUT
+    header: PeerDependencies
+    showHeader: true
+    position: center
+  badgeStyle: 
+    <<: *DEPENDENCIES_STYLE
+    style: flat
   items:
     - name: "@nestjs/common"
       namedLogo: npm
@@ -46,7 +52,11 @@ dependencies:
   items: []
 
 devDependencies:
-  layout: *DEPENDENCIES_LAYOUT
+  layout: 
+    <<: *DEPENDENCIES_LAYOUT
+    header: DevDependencies
+    showHeader: true
+    position: center
   badgeStyle:
     <<: *DEPENDENCIES_STYLE
     style: flat-square
@@ -107,7 +117,8 @@ devDependencies:
 statusBadges:
   layout:
     position: center
-    showHeader: false
+    showHeader: true
+    header: StatusBadges
   badgeStyle: *STATUS_BADGES_STYLE
   items:
     - name: github
@@ -128,18 +139,3 @@ statusBadges:
       repo: ckir-helpers
       branch: main
       namedLogo: github
-    - name: tile
-      message: NestJS
-      label: Framework
-      color: "e0234e"
-      link: https://github.com/nestjs/nest
-    - name: tile
-      message: Swagger
-      label: OpenAPI
-      color: "e0234e"
-      link: https://github.com/nestjs/swagger
-    - name: tile
-      message: Joi
-      label: Validation
-      color: "048d04"
-      link: https://github.com/sideway/joi
