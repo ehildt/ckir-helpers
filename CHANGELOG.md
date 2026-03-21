@@ -1,5 +1,11 @@
 # @ehildt/ckir-helpers
 
+## 1.0.1
+
+### Patch Changes
+
+- 3b911e2: Rename .wiki files to lowercase for consistency
+
 ## 1.0.0
 
 ### Major Changes
