@@ -1,5 +1,11 @@
 # @ehildt/ckir-helpers
 
+## 1.2.2
+
+### Patch Changes
+
+- 6759329: improve README badges and add section headers
+
 ## 1.2.1
 
 ### Patch Changes
