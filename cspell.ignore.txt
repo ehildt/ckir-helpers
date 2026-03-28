@@ -54,6 +54,7 @@ depbadgerc
 depbadges
 DEPBADGES
 depcheck
+depcheckrc
 depcruise
 depcruiserrc
 depshield
