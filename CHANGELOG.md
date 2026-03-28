@@ -1,5 +1,11 @@
 # @ehildt/ckir-helpers
 
+## 1.2.3
+
+### Patch Changes
+
+- 3872c1b: Fix ESM export by removing `".": null` from package.json exports. This resolves ERR_PACKAGE_PATH_NOT_EXPORTED error in Node.js v24+.
+
 ## 1.2.2
 
 ### Patch Changes
