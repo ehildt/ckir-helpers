@@ -48,6 +48,45 @@ getBooleanEnv(undefined); // null
 
 ---
 
+## getByteSizeEnv
+
+Parses an environment variable string into bytes. Supports units: B, KB, MB, GB, TB.
+
+```typescript
+import { getByteSizeEnv } from "@ehildt/ckir-helpers/get-byte-size-env";
+```
+
+### Signature
+
+```typescript
+function getByteSizeEnv(
+  value?: string | null,
+  fallback?: number
+): number | null;
+```
+
+### Parameters
+
+| Parameter  | Type                          | Description                             |
+| ---------- | ----------------------------- | --------------------------------------- |
+| `value`    | `string \| null \| undefined` | The environment variable value to parse |
+| `fallback` | `number` (optional)           | Fallback value if parsing fails         |
+
+### Examples
+
+```typescript
+getByteSizeEnv("100B"); // 100
+getByteSizeEnv("1KB"); // 1024
+getByteSizeEnv("1MB"); // 1048576
+getByteSizeEnv("1.5GB"); // 1610612736
+getByteSizeEnv("1tb"); // 1099511627776
+getByteSizeEnv(null, 1024); // 1024
+getByteSizeEnv("invalid", 0); // 0
+getByteSizeEnv(undefined); // null
+```
+
+---
+
 ## getNumberEnv
 
 Parses an environment variable string into a number, supporting both integers and floats. Automatically normalizes commas to periods for European decimal notation.
