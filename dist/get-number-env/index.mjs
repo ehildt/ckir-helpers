@@ -4,14 +4,14 @@ function getNumberEnv(value, fallback) {
   const normalized = value.trim().replace(",", ".");
   const floatRegex = /^-?\d+(\.\d+)?$/;
   if (!floatRegex.test(normalized)) return fallback ?? null;
-  let parsed;
   if (normalized.includes(".")) {
-    parsed = parseFloat(normalized);
-  } else {
-    const intVal = BigInt(normalized);
-    parsed = intVal <= BigInt(Number.MAX_SAFE_INTEGER) && intVal >= BigInt(Number.MIN_SAFE_INTEGER) ? Number(intVal) : intVal;
+    return parseFloat(normalized);
   }
-  return typeof parsed === "bigint" || !Number.isNaN(parsed) ? parsed : fallback ?? null;
+  const intVal = BigInt(normalized);
+  if (intVal <= BigInt(Number.MAX_SAFE_INTEGER) && intVal >= BigInt(Number.MIN_SAFE_INTEGER)) {
+    return Number(intVal);
+  }
+  return intVal;
 }
 
 export { getNumberEnv };

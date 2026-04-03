@@ -20,6 +20,12 @@ var AppConfigSchema = Joi.object({
     optionsSuccessStatus: Joi.number().optional(),
     credentials: Joi.boolean().optional(),
     allowedHeaders: Joi.string().allow(null).optional()
+  }).optional(),
+  health: Joi.object({
+    memoryHeap: Joi.number().min(0).optional(),
+    memoryRSS: Joi.number().min(0).optional(),
+    diskPath: Joi.string().optional(),
+    diskThresholdPercent: Joi.number().min(0).optional()
   }).optional()
 });
 

@@ -18,6 +18,12 @@ type AppConfig = {
         credentials?: boolean;
         allowedHeaders?: string;
     };
+    health?: {
+        memoryHeap?: number;
+        memoryRSS?: number;
+        diskPath?: string;
+        diskThresholdPercent?: number;
+    };
 };
 
 declare const AppConfigSchema: Joi.ObjectSchema<AppConfig>;
