@@ -61,4 +61,76 @@ describe("AppConfigSchema", () => {
     expect(error).toBeDefined();
     expect(error?.details.some((d) => d.message.includes("port"))).toBe(true);
   });
+
+  it("validates config with optional health", () => {
+    const configWithHealth = {
+      printConfig: true,
+      enableSwagger: false,
+      bodyLimit: 1024,
+      address: "127.0.0.1",
+      port: 3000,
+      nodeEnv: "development",
+      health: {
+        memoryHeap: 256 * 1024 * 1024,
+        memoryRSS: 256 * 1024 * 1024,
+        diskPath: "/",
+        diskThresholdPercent: 0.8,
+      },
+    };
+
+    const { error, value } = AppConfigSchema.validate(configWithHealth);
+    expect(error).toBeUndefined();
+    expect(value.health).toEqual(configWithHealth.health);
+  });
+
+  it("validates config with partial health", () => {
+    const configWithPartialHealth = {
+      printConfig: true,
+      enableSwagger: false,
+      bodyLimit: 1024,
+      address: "127.0.0.1",
+      port: 3000,
+      nodeEnv: "development",
+      health: {
+        memoryHeap: 512 * 1024 * 1024,
+      },
+    };
+
+    const { error, value } = AppConfigSchema.validate(configWithPartialHealth);
+    expect(error).toBeUndefined();
+    expect(value.health?.memoryHeap).toBe(512 * 1024 * 1024);
+    expect(value.health?.memoryRSS).toBeUndefined();
+  });
+
+  it("fails if health memoryHeap is negative", () => {
+    const { error } = AppConfigSchema.validate({
+      printConfig: true,
+      enableSwagger: false,
+      bodyLimit: 1024,
+      address: "127.0.0.1",
+      port: 3000,
+      nodeEnv: "development",
+      health: {
+        memoryHeap: -1,
+      },
+    });
+    expect(error).toBeDefined();
+    expect(error?.details.some((d) => d.path.includes("memoryHeap"))).toBe(true);
+  });
+
+  it("fails if health memoryRSS is negative", () => {
+    const { error } = AppConfigSchema.validate({
+      printConfig: true,
+      enableSwagger: false,
+      bodyLimit: 1024,
+      address: "127.0.0.1",
+      port: 3000,
+      nodeEnv: "development",
+      health: {
+        memoryRSS: -100,
+      },
+    });
+    expect(error).toBeDefined();
+    expect(error?.details.some((d) => d.path.includes("memoryRSS"))).toBe(true);
+  });
 });

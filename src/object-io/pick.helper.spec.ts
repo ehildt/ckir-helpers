@@ -47,4 +47,17 @@ describe("pick", () => {
     const result = pick(user, ["name"]);
     expect(result).toEqual({ name: "Alice" });
   });
+
+  test("ignores keys not in the object", () => {
+    const user = { name: "Alice" };
+    const result = pick(user, ["name", "nonexistent"]);
+    expect(result).toEqual({ name: "Alice" });
+  });
+
+  test("handles symbol keys", () => {
+    const sym = Symbol("test");
+    const obj = { [sym]: "value", name: "Alice" };
+    const result = pick(obj, [sym as keyof typeof obj]);
+    expect(result).toEqual({ [sym]: "value" });
+  });
 });

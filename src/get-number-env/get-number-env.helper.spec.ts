@@ -75,4 +75,21 @@ describe("getNumberEnv", () => {
     expect(typeof result).toBe("number");
     expect(result).toBe(Number(safe));
   });
+
+  test("handles negative BigInt beyond safe range", () => {
+    const largeNegative = "-9007199254740993";
+    const result = getNumberEnv(largeNegative);
+    expect(typeof result).toBe("bigint");
+    expect(result).toBe(BigInt(largeNegative));
+  });
+
+  test("returns fallback when result is NaN", () => {
+    expect(getNumberEnv("abc", 42)).toBe(42);
+    expect(getNumberEnv("12abc", 99)).toBe(99);
+  });
+
+  test("handles value that passes regex but produces NaN", () => {
+    expect(getNumberEnv(".")).toBeNull();
+    expect(getNumberEnv(".", 50)).toBe(50);
+  });
 });

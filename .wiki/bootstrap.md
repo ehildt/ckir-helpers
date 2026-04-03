@@ -178,20 +178,43 @@ export const SWAGGER_DOCUMENT = new DocumentBuilder()
 
 ```typescript
 interface AppConfig {
+  /** Port number for the server (1-65535) */
   port: number;
+  /** Environment: development, production, test, or local */
   nodeEnv: string;
+  /** IP address to bind to (IPv4 or IPv6) */
   address: string;
+  /** Whether to log the config object at startup */
   printConfig: boolean;
+  /** Request body size limit in bytes (min: 1) */
   bodyLimit: number;
+  /** Whether to enable Swagger UI at /api-docs */
   enableSwagger: boolean;
+  /** NestJS log levels for output (defaults to all levels if not set) */
   logLevel?: Array<LogLevel>;
   cors?: {
+    /** Allowed origin for CORS (string, wildcard "*", or RegExp) */
     origin?: string;
+    /** Allowed HTTP methods (e.g., "GET,POST,PUT,DELETE") */
     methods?: string;
+    /** Whether to pass CORS preflight to next handler instead of handling it */
     preflightContinue?: boolean;
+    /** HTTP status code for successful OPTIONS responses (default: 204) */
     optionsSuccessStatus?: number;
+    /** Whether to allow credentials (cookies, authorization headers) */
     credentials?: boolean;
+    /** Custom headers to expose via Access-Control-Expose-Headers (null clears defaults) */
     allowedHeaders?: string;
+  };
+  health?: {
+    /** Maximum heap memory threshold before health check fails (use getByteSizeEnv to parse env like "256MB") */
+    memoryHeap?: number;
+    /** Maximum RSS (Resident Set Size) memory threshold before health check fails */
+    memoryRSS?: number;
+    /** Disk path to check available space (defaults to root "/") */
+    diskPath?: string;
+    /** Disk usage threshold (0.8 = 80% used / 20% available). Fails if usage exceeds this threshold */
+    diskThresholdPercent?: number;
   };
 }
 ```
@@ -202,13 +225,24 @@ interface AppConfig {
 
 Joi validation schema for AppConfig with the following rules:
 
-| Field           | Validation                                                  |
-| --------------- | ----------------------------------------------------------- |
-| `printConfig`   | Required boolean                                            |
-| `enableSwagger` | Required boolean                                            |
-| `bodyLimit`     | Required number, minimum 1                                  |
-| `address`       | Required valid IPv4 or IPv6 address                         |
-| `port`          | Required integer, 1-65535                                   |
-| `nodeEnv`       | Required, one of: development, production, test, local      |
-| `logLevel`      | Optional array of log level strings, defaults to all levels |
-| `cors`          | Optional object with CORS configuration                     |
+| Field                     | Validation                                                                                      |
+| ------------------------- | ----------------------------------------------------------------------------------------------- |
+| `printConfig`             | Required boolean - whether to log config at startup                                            |
+| `enableSwagger`           | Required boolean - whether to enable Swagger UI                                               |
+| `bodyLimit`               | Required number >= 1 - max request body size in bytes                                          |
+| `address`                 | Required valid IPv4 or IPv6 address                                                             |
+| `port`                    | Required integer 1-65535 - server port                                                          |
+| `nodeEnv`                 | Required string: development, production, test, or local                                       |
+| `logLevel`                | Optional array of log levels: warn, error, debug, log, verbose, fatal (defaults to all)         |
+| `cors`                    | Optional CORS configuration object                                                              |
+| `cors.origin`             | Optional string - allowed origin for CORS (string, wildcard, or RegExp)                        |
+| `cors.methods`            | Optional string - allowed HTTP methods (e.g., "GET,POST,PUT,DELETE")                            |
+| `cors.preflightContinue`  | Optional boolean - whether to pass preflight to next handler                                    |
+| `cors.optionsSuccessStatus`| Optional number - HTTP status for successful OPTIONS (default: 204)                            |
+| `cors.credentials`        | Optional boolean - whether to allow credentials                                                |
+| `cors.allowedHeaders`     | Optional string - custom headers to expose (null clears defaults)                               |
+| `health`                  | Optional health check configuration object                                                    |
+| `health.memoryHeap`       | Optional number >= 0 - max heap memory in bytes (use getByteSizeEnv to parse "256MB")          |
+| `health.memoryRSS`        | Optional number >= 0 - max RSS memory in bytes (use getByteSizeEnv to parse "512MB")          |
+| `health.diskPath`         | Optional string - path to check disk space (defaults to "/")                                    |
+| `health.diskThresholdPercent` | Optional number >= 0 - disk usage threshold (0.8 = 80% used, fails if exceeded)           |

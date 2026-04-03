@@ -1,4 +1,4 @@
-integrity: 5809e5606d694e67342f3e1577056278b336b4ff67c83fef28d532704345c170
+integrity: cc3dc53abe9e1affbe13df998d06549e5a7669a6e60d91332efbdf5861af3cea
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ehildt/depbadge/refs/heads/main/depbadgerc.schema.json
 
 target: README.md
@@ -139,3 +139,8 @@ statusBadges:
       repo: ckir-helpers
       branch: main
       namedLogo: github
+    - name: codecov
+      user: ehildt
+      repo: ckir-helpers
+      branch: main
+      namedLogo: codecov

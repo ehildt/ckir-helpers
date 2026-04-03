@@ -25,15 +25,12 @@ export function getNumberEnv(value?: string | null, fallback?: number): number |
   const floatRegex = /^-?\d+(\.\d+)?$/;
   if (!floatRegex.test(normalized)) return fallback ?? null;
 
-  let parsed: number | bigint;
-
   if (normalized.includes(".")) {
-    parsed = parseFloat(normalized);
-  } else {
-    const intVal = BigInt(normalized);
-    parsed =
-      intVal <= BigInt(Number.MAX_SAFE_INTEGER) && intVal >= BigInt(Number.MIN_SAFE_INTEGER) ? Number(intVal) : intVal;
+    return parseFloat(normalized);
   }
-
-  return typeof parsed === "bigint" || !Number.isNaN(parsed as number) ? parsed : fallback ?? null;
+  const intVal = BigInt(normalized);
+  if (intVal <= BigInt(Number.MAX_SAFE_INTEGER) && intVal >= BigInt(Number.MIN_SAFE_INTEGER)) {
+    return Number(intVal);
+  }
+  return intVal;
 }

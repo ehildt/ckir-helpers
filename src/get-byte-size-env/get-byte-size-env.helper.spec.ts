@@ -94,4 +94,19 @@ describe("getByteSizeEnv", () => {
     expect(getByteSizeEnv("MB")).toBeNull();
     expect(getByteSizeEnv("GB", 100)).toBe(100);
   });
+
+  test("handles edge cases that produce NaN", () => {
+    expect(getByteSizeEnv("5.MB")).toBeNull();
+    expect(getByteSizeEnv(".MB")).toBeNull();
+  });
+
+  test("handles regex match failure that results in NaN", () => {
+    expect(getByteSizeEnv("invalid")).toBeNull();
+    expect(getByteSizeEnv("no-number", 50)).toBe(50);
+  });
+
+  test("handles valid format but invalid number (NaN)", () => {
+    expect(getByteSizeEnv("abcMB")).toBeNull();
+    expect(getByteSizeEnv("abcMB", 100)).toBe(100);
+  });
 });

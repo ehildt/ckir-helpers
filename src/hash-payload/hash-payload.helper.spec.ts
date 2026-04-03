@@ -49,8 +49,19 @@ describe("hashPayload", () => {
   it("should produce different outputs for different encodings", () => {
     const input = "encode me";
     const hashes = encodings.map((enc) => hashPayload(input, "sha256", enc));
-    // all hashes should be unique
     const uniqueHashes = new Set(hashes);
     expect(uniqueHashes.size).toBe(hashes.length);
+  });
+
+  it("should handle Buffer input", () => {
+    const buffer = Buffer.from("test buffer");
+    const expected = createHash("sha256").update(buffer).digest("hex");
+    expect(hashPayload(buffer, "sha256", "hex")).toBe(expected);
+  });
+
+  it("should handle Uint8Array input", () => {
+    const uint8 = new TextEncoder().encode("test uint8array");
+    const expected = createHash("sha256").update(uint8).digest("hex");
+    expect(hashPayload(uint8, "sha256", "hex")).toBe(expected);
   });
 });
