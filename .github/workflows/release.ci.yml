@@ -161,6 +161,11 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
       - name: Version bump & publish
         run: |
           # Apply changeset version bump locally
