@@ -2,6 +2,16 @@ const WHITELIST = {
   noOrphans: [],
   notToDevDep: ["src/config.yml.loader.ts"],
   notToUnresolvable: ["src/depbadgerc/read-depbadgerc-with-defaults.ts"],
+  peerDeps: [
+    "src/bootstrap/swagger-document-builder.helper.ts",
+    "src/bootstrap/log-swagger-path.helper.ts",
+    "src/bootstrap/log-server-path.helper.ts",
+    "src/bootstrap/log-config-object.helper.ts",
+    "src/bootstrap/global-validation-pipeline.helper.ts",
+    "src/bootstrap/bootstrap.constants.ts",
+    "src/bootstrap/app-config.schema.ts",
+    "src/bootstrap/app-config.model.ts",
+  ],
 };
 
 /** @type {import('dependency-cruiser').IConfiguration} */
@@ -173,7 +183,9 @@ export default {
         "other cases - maybe not so much. If the use of a peer dependency is intentional " +
         "add an exception to your dependency-cruiser configuration.",
       severity: "warn",
-      from: {},
+      from: {
+        pathNot: WHITELIST.peerDeps,
+      },
       to: {
         dependencyTypes: ["npm-peer"],
       },

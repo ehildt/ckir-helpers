@@ -4,6 +4,7 @@ export default defineConfig({
   entry: [
     "src/bootstrap/index.ts",
     "src/get-boolean-env/index.ts",
+    "src/get-byte-size-env/index.ts",
     "src/get-number-env/index.ts",
     "src/hash-payload/index.ts",
     "src/object-io/index.ts",

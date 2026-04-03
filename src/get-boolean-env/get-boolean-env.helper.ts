@@ -6,6 +6,6 @@
  * @returns {boolean | null} `true` if the value starts with "true", otherwise `false`; returns the fallback or null if the value is not provided.
  */
 export function getBooleanEnv(value?: string | null, fallback?: boolean): boolean | null {
-  if (value === undefined || value === null) return fallback ?? null;
-  return value.startsWith("true");
+  if (value == null) return fallback ?? null;
+  return value.toLowerCase().startsWith("true");
 }
