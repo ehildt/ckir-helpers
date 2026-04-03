@@ -1,5 +1,11 @@
 # @ehildt/ckir-helpers
 
+## 1.3.2
+
+### Patch Changes
+
+- 09f95e7: Fix release CI not publishing built artifacts
+
 ## 1.3.1
 
 ### Patch Changes

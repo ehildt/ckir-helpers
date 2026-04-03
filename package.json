@@ -1,7 +1,7 @@
 {
   "name": "@ehildt/ckir-helpers",
   "description": "A shared utility library providing helper functions for the CKIR project.",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "license": "MIT",
   "type": "module",
   "exports": {
