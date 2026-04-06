@@ -196,6 +196,7 @@ sopts
 spacebadges
 spdx
 sropts
+stefanzweifel
 supertest
 tailwindcss
 tanstack

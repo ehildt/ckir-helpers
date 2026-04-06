@@ -42,6 +42,7 @@ jobs:
         if: github.event_name == 'schedule'
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.CICD_ACTIONS }}
           commit-message: "chore(deps): update dependencies"
           title: "chore(deps): update dependencies"
           body: |
