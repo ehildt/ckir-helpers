@@ -1,5 +1,16 @@
 # @ehildt/ckir-helpers
 
+## 1.4.0
+
+### Minor Changes
+
+- 18015e9: Add findUp helper and enhance readPackageJsonFromRoot
+
+  - Added `findUp()` helper function that recursively searches for a file by traversing up the directory tree
+  - Enhanced `readPackageJsonFromRoot()` to accept optional `filename` and `startDir` parameters for custom file discovery
+  - `readPackageJsonFromRoot()` now throws an error if the file is not found
+  - Updated exports to include the new `findUp` helper
+
 ## 1.3.3
 
 ### Patch Changes
