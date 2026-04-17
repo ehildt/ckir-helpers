@@ -1,5 +1,6 @@
 import * as fs from "fs";
-import * as path from "path";
+
+import { findUp } from "../find-up/index.ts";
 
 interface PackageConfig {
   name: string;
@@ -7,9 +8,12 @@ interface PackageConfig {
   description: string;
 }
 
-export function readPackageJsonFromRoot(): PackageConfig {
-  const rootPath = process.cwd();
-  const packageJsonPath = path.join(rootPath, "package.json");
+export function readPackageJsonFromRoot(
+  filename: string = "package.json",
+  startDir: string = process.cwd(),
+): PackageConfig {
+  const packageJsonPath = findUp(filename, startDir);
+  if (!packageJsonPath) throw Error(`File ${filename} not found`);
   const fileContent = fs.readFileSync(packageJsonPath, "utf8");
   return JSON.parse(fileContent) as PackageConfig;
 }

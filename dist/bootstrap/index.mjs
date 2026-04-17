@@ -1,10 +1,10 @@
+import { findUp } from '../chunk-W4QSZBWZ.mjs';
+export { findUp } from '../chunk-W4QSZBWZ.mjs';
 import Joi from 'joi';
 import { ValidationPipe } from '@nestjs/common';
 import * as fs from 'fs';
-import * as path from 'path';
 import { DocumentBuilder } from '@nestjs/swagger';
 
-// src/bootstrap/app-config.schema.ts
 var AppConfigSchema = Joi.object({
   printConfig: Joi.boolean().required(),
   enableSwagger: Joi.boolean().required(),
@@ -68,9 +68,9 @@ function logSwaggerPath(logger, appConfig) {
   logger.warn(`${baseUrl}/${API_DOCS_JSON}`, "Swagger JSON");
   logger.warn(`${baseUrl}/${API_DOCS}`, "Swagger UI");
 }
-function readPackageJsonFromRoot() {
-  const rootPath = process.cwd();
-  const packageJsonPath = path.join(rootPath, "package.json");
+function readPackageJsonFromRoot(filename = "package.json", startDir = process.cwd()) {
+  const packageJsonPath = findUp(filename, startDir);
+  if (!packageJsonPath) throw Error(`File ${filename} not found`);
   const fileContent = fs.readFileSync(packageJsonPath, "utf8");
   return JSON.parse(fileContent);
 }

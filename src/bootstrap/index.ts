@@ -1,3 +1,4 @@
+export { findUp } from "../find-up/index.ts";
 export type { AppConfig } from "./app-config.model.ts";
 export { AppConfigSchema } from "./app-config.schema.ts";
 export {

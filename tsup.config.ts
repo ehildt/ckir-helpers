@@ -3,6 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   entry: [
     "src/bootstrap/index.ts",
+    "src/find-up/index.ts",
     "src/get-boolean-env/index.ts",
     "src/get-byte-size-env/index.ts",
     "src/get-number-env/index.ts",

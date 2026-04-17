@@ -129,15 +129,54 @@ export function logSwaggerPath(logger: Logger, appConfig: AppConfig): void;
 
 ---
 
-### readPackageJsonFromRoot
+### findUp
 
-Reads and parses package.json from the current working directory.
+Recursively searches for a file by traversing up the directory tree from the current working directory.
 
 ```typescript
-export function readPackageJsonFromRoot(): PackageConfig;
+export function findUp(
+  filename: string,
+  startDir: string = process.cwd()
+): string | null;
 ```
 
+**Parameters:**
+
+- `filename` - The name of the file to find (e.g., "README.md", "package.json")
+- `startDir` - Optional directory to start searching from (defaults to `process.cwd()`)
+
+**Returns:** The absolute path to the found file, or `null` if the file is not found up to the filesystem root
+
+**Example:**
+
+```typescript
+const readmePath = findUp("README.md");
+if (readmePath) {
+  console.log(`Found README at ${readmePath}`);
+}
+```
+
+---
+
+### readPackageJsonFromRoot
+
+Reads and parses package.json from the current working directory or specified path.
+
+```typescript
+export function readPackageJsonFromRoot(
+  filename: string = "package.json",
+  startDir: string = process.cwd()
+): PackageConfig;
+```
+
+**Parameters:**
+
+- `filename` - Optional filename to read (defaults to "package.json")
+- `startDir` - Optional directory to start searching from (defaults to `process.cwd()`)
+
 **Returns:** Object containing `name`, `version`, and `description`
+
+**Throws:** Error if the file is not found
 
 ---
 

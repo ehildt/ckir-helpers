@@ -1,3 +1,4 @@
+export { findUp } from '../find-up/index.js';
 import { LogLevel, ValidationPipe, Logger } from '@nestjs/common';
 import Joi from 'joi';
 import * as _nestjs_swagger from '@nestjs/swagger';
@@ -48,7 +49,7 @@ interface PackageConfig {
     version: string;
     description: string;
 }
-declare function readPackageJsonFromRoot(): PackageConfig;
+declare function readPackageJsonFromRoot(filename?: string, startDir?: string): PackageConfig;
 
 declare const SWAGGER_DOCUMENT: Omit<_nestjs_swagger.OpenAPIObject, "paths">;
 
