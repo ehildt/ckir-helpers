@@ -5,5 +5,14 @@ export default defineConfig({
     environment: "node",
     globals: true,
     include: ["src/**/*.spec.ts"],
+    coverage: {
+      exclude: [
+        "**/index.ts",
+        "**/*.d.ts",
+        "**/node_modules/**",
+        "dist/**",
+        "coverage/**",
+      ],
+    },
   },
 });

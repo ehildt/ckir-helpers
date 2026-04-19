@@ -8,6 +8,7 @@ export default defineConfig({
     "src/get-byte-size-env/index.ts",
     "src/get-number-env/index.ts",
     "src/hash-payload/index.ts",
+    "src/is-buffer-or-serialized/index.ts",
     "src/object-io/index.ts",
     "src/text-to-lines/index.ts",
   ],

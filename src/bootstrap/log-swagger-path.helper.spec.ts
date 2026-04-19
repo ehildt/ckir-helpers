@@ -1,7 +1,7 @@
 import { Logger } from "@nestjs/common";
 
-import { logSwaggerPath } from "./log-swagger-path.helper.ts";
 import type { AppConfig } from "./app-config.model.ts";
+import { logSwaggerPath } from "./log-swagger-path.helper.ts";
 
 describe("logSwaggerPath", () => {
   let mockLogger: { warn: ReturnType<typeof vi.fn> };

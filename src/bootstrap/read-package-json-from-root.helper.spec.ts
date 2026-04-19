@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import * as path from "path";
 import * as os from "os";
+import * as path from "path";
 
 import { readPackageJsonFromRoot } from "./read-package-json-from-root.helper.ts";
 

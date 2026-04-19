@@ -1,7 +1,7 @@
 import { Logger } from "@nestjs/common";
 
-import { logServerPath } from "./log-server-path.helper.ts";
 import type { AppConfig } from "./app-config.model.ts";
+import { logServerPath } from "./log-server-path.helper.ts";
 
 describe("logServerPath", () => {
   let mockLogger: { log: ReturnType<typeof vi.fn> };
