@@ -1,4 +1,4 @@
-import { Logger } from "@nestjs/common";
+import { Logger } from '@nestjs/common';
 
 export function logConfigObject(logger: Logger, factory: Record<string, unknown>, printConfig = false) {
   if (printConfig)

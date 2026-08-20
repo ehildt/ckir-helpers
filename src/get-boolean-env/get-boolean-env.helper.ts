@@ -7,5 +7,5 @@
  */
 export function getBooleanEnv(value?: string | null, fallback?: boolean): boolean | null {
   if (value == null) return fallback ?? null;
-  return value.toLowerCase().startsWith("true");
+  return value.toLowerCase().startsWith('true');
 }

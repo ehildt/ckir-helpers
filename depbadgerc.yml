@@ -99,6 +99,8 @@ devDependencies:
       namedLogo: npm
     - name: npm-check-updates
       namedLogo: npm
+    - name: prettier
+      namedLogo: prettier
     - name: rimraf
       namedLogo: npm
     - name: source-map-support

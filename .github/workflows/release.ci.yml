@@ -18,96 +18,53 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-
-      - uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: pnpm-store-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-
-      - run: pnpm install --frozen-lockfile
-
-      - name: Lint
-        run: |
-          pnpm lint
-          pnpm depcruise
-          pnpm lint:unused
-
-      - name: Build
-        run: pnpm build
-
-      - name: Test
-        run: |
-          pnpm test
-          pnpm test:cov
-
-      - name: Upload Coverage
-        if: github.event_name == 'push'
-        uses: codecov/codecov-action@v5
-        with:
-          fail_ci_if_error: true
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-      - uses: actions/upload-artifact@v4
-        if: github.event_name == 'push'
-        with:
-          name: dist
-          path: dist/
+  # Lint, build and test are shared with the non-release pipeline via ci.yml.
+  ci:
+    uses: ./.github/workflows/ci.yml
+    with:
+      upload-coverage: true
+      upload-artifacts: true
+    secrets: inherit
 
   repo-update:
     if: github.event_name == 'push'
-    needs: build-test
+    needs: ci
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
+      - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
 
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm -r install --frozen-lockfile
 
       - name: Changeset
         run: pnpm changeset version
+
       - name: Commit version bump
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "VERSION BUMP"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/download-artifact@v4
+      - name: Download dist
+        uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist/
 
       - name: Depbadge
-        uses: ehildt/depbadge@v1
+        run: npx @ehildt/depbadge
 
       - name: Commit badge bump
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "BADGE BUMP"
         env:
@@ -115,13 +72,13 @@ jobs:
 
   wiki:
     if: github.event_name == 'push'
-    needs: build-test
+    needs: ci
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: ${{ github.repository }}.wiki
           path: wiki
@@ -146,22 +103,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0 # ensure we can see the latest commits
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
+      - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
 
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm -r install --frozen-lockfile
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist/

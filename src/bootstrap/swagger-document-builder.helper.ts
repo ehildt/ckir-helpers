@@ -1,6 +1,6 @@
-import { DocumentBuilder } from "@nestjs/swagger";
+import { DocumentBuilder } from '@nestjs/swagger';
 
-import { readPackageJsonFromRoot } from "./read-package-json-from-root.helper.ts";
+import { readPackageJsonFromRoot } from './read-package-json-from-root.helper.ts';
 
 const PACKAGE_JSON = readPackageJsonFromRoot();
 

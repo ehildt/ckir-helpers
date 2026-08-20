@@ -58,7 +58,7 @@ export class TextToLines {
    * @throws {Error} If no valid sentences exist
    */
   build(): string[] {
-    if (!this.linesArr.length) throw new Error("Converting text to lines");
+    if (!this.linesArr.length) throw new Error('Converting text to lines');
     return this.linesArr;
   }
 

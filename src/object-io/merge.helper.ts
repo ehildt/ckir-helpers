@@ -12,10 +12,10 @@ export const merge = (a: Record<string, any>, b: Record<string, any>, deep = fal
     const valA = a[key];
     if (
       valA &&
-      typeof valA === "object" &&
+      typeof valA === 'object' &&
       !Array.isArray(valA) &&
       valB &&
-      typeof valB === "object" &&
+      typeof valB === 'object' &&
       !Array.isArray(valB)
     )
       result[key] = merge(valA, valB, true);

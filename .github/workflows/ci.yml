@@ -1,0 +1,70 @@
+name: CI
+
+# Shared lint / build / test pipeline used by both the non-release and release
+# workflows. Parameterized so each caller only supplies what differs:
+#   - `upload-coverage`: upload v8 coverage to Codecov (push only)
+#   - `upload-artifacts`: publish the `dist` artifact for the release jobs
+on:
+  workflow_call:
+    inputs:
+      upload-coverage:
+        description: Upload coverage to Codecov (push only).
+        type: boolean
+        required: false
+        default: false
+      upload-artifacts:
+        description: Upload dist artifact for the release jobs.
+        type: boolean
+        required: false
+        default: false
+
+env:
+  HUSKY: 0
+
+jobs:
+  build-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm -r install --frozen-lockfile
+
+      - name: Lint
+        run: |
+          pnpm lint
+          pnpm depcruise
+          pnpm lint:unused
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        run: |
+          pnpm test
+          pnpm test:cov
+
+      - name: Upload Coverage
+        if: ${{ inputs.upload-coverage && github.event_name == 'push' }}
+        uses: codecov/codecov-action@v7
+        with:
+          fail_ci_if_error: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload Artifact
+        if: ${{ inputs.upload-artifacts && github.event_name == 'push' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist/

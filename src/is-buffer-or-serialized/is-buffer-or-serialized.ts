@@ -3,7 +3,7 @@
  * `JSON.stringify(Buffer.from(...))` which outputs: `{ type: "Buffer", data: [...] }`
  */
 export type SerializedBuffer = {
-  type: "Buffer";
+  type: 'Buffer';
   data: number[];
 };
 
@@ -36,9 +36,9 @@ export function isActualArrayBuffer(obj: object): obj is ArrayBuffer {
 
   // Cross-realm fallback: check toString tag AND verify constructor
   // A spoofed object with Symbol.toStringTag won't have the correct constructor
-  if (getObjectClass(obj) === "[object ArrayBuffer]") {
+  if (getObjectClass(obj) === '[object ArrayBuffer]') {
     // Verify by checking for the slice method which is unique to ArrayBuffer
-    return typeof (obj as ArrayBuffer).slice === "function";
+    return typeof (obj as ArrayBuffer).slice === 'function';
   }
 
   return false;
@@ -54,8 +54,8 @@ export function isActualSharedArrayBuffer(obj: object): obj is SharedArrayBuffer
 
   // Cross-realm fallback: check toString tag AND verify slice method exists
   // SharedArrayBuffer has slice method just like ArrayBuffer
-  if (getObjectClass(obj) === "[object SharedArrayBuffer]") {
-    return typeof (obj as SharedArrayBuffer).slice === "function";
+  if (getObjectClass(obj) === '[object SharedArrayBuffer]') {
+    return typeof (obj as SharedArrayBuffer).slice === 'function';
   }
 
   return false;
@@ -66,7 +66,7 @@ export function isActualSharedArrayBuffer(obj: object): obj is SharedArrayBuffer
  * Returns false in non-Node.js environments where Buffer is undefined.
  */
 export function isNodeBuffer(obj: object): obj is Buffer {
-  return typeof Buffer !== "undefined" && Buffer.isBuffer?.(obj);
+  return typeof Buffer !== 'undefined' && Buffer.isBuffer?.(obj);
 }
 
 /**
@@ -75,7 +75,7 @@ export function isNodeBuffer(obj: object): obj is Buffer {
  */
 export function isSerializedBuffer(obj: object): obj is SerializedBuffer {
   const record = obj as Record<string, unknown>;
-  return record.type === "Buffer" && Array.isArray(record.data);
+  return record.type === 'Buffer' && Array.isArray(record.data);
 }
 
 /**
@@ -102,7 +102,7 @@ export function isSerializedBuffer(obj: object): obj is SerializedBuffer {
  * ```
  */
 export function isBufferOrSerialized(obj: unknown): obj is BufferLike {
-  if (!obj || typeof obj !== "object") return false;
+  if (!obj || typeof obj !== 'object') return false;
   if (isActualArrayBuffer(obj)) return true;
   if (isActualSharedArrayBuffer(obj)) return true;
   if (ArrayBuffer.isView(obj)) return true;

@@ -7,4 +7,4 @@ export {
   isNodeBuffer,
   isSerializedBuffer,
   type SerializedBuffer,
-} from "./is-buffer-or-serialized.ts";
+} from './is-buffer-or-serialized.ts';

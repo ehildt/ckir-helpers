@@ -1,4 +1,4 @@
-import { LogLevel } from "@nestjs/common";
+import { LogLevel } from '@nestjs/common';
 
 export type AppConfig = {
   port: number;

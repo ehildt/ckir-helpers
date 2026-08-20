@@ -21,11 +21,11 @@
 export function getNumberEnv(value?: string | null, fallback?: number): number | bigint | null {
   if (value == null) return fallback ?? null;
 
-  const normalized = value.trim().replace(",", ".");
+  const normalized = value.trim().replace(',', '.');
   const floatRegex = /^-?\d+(\.\d+)?$/;
   if (!floatRegex.test(normalized)) return fallback ?? null;
 
-  if (normalized.includes(".")) {
+  if (normalized.includes('.')) {
     return parseFloat(normalized);
   }
   const intVal = BigInt(normalized);

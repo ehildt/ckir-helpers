@@ -1,6 +1,6 @@
-import { BinaryToTextEncoding, createHash } from "crypto";
+import { BinaryToTextEncoding, createHash } from 'crypto';
 
-export type HashPayloadSupportedAlgorithm = "sha256" | "sha384" | "sha512";
+export type HashPayloadSupportedAlgorithm = 'sha256' | 'sha384' | 'sha512';
 
 /**
  * Generates a cryptographic hash for the given input using a supported algorithm.
@@ -27,15 +27,15 @@ export type HashPayloadSupportedAlgorithm = "sha256" | "sha384" | "sha512";
  */
 export function hashPayload(
   payload: string | Record<any, any> | Buffer | Uint8Array,
-  algorithm: HashPayloadSupportedAlgorithm = "sha256",
-  encoder: BinaryToTextEncoding = "hex",
+  algorithm: HashPayloadSupportedAlgorithm = 'sha256',
+  encoder: BinaryToTextEncoding = 'hex',
 ) {
   const hash = createHash(algorithm);
 
   if (Buffer.isBuffer(payload) || payload instanceof Uint8Array) {
     hash.update(payload);
-  } else if (typeof payload === "string") {
-    hash.update(payload, "utf8");
+  } else if (typeof payload === 'string') {
+    hash.update(payload, 'utf8');
   } else {
     hash.update(JSON.stringify(payload));
   }

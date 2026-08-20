@@ -1,1 +1,1 @@
-export { TextToLines } from "./text-to-lines.helper.ts";
+export { TextToLines } from './text-to-lines.helper.ts';

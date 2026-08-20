@@ -1,1 +1,1 @@
-export { findUp } from "./find-up.helper.ts";
+export { findUp } from './find-up.helper.ts';

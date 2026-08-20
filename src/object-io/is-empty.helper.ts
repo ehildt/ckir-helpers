@@ -19,6 +19,6 @@
  * isEmpty('string');     // throws TypeError
  */
 export function isEmpty(obj: Record<string, any> | any[]): boolean {
-  if (!obj || typeof obj !== "object") throw new TypeError("Expected a JSON object or array");
+  if (!obj || typeof obj !== 'object') throw new TypeError('Expected a JSON object or array');
   return Object.keys(obj).length === 0;
 }
