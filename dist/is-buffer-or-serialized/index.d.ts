@@ -1,5 +1,5 @@
 type SerializedBuffer = {
-    type: "Buffer";
+    type: 'Buffer';
     data: number[];
 };
 type BufferLike = ArrayBuffer | SharedArrayBuffer | ReturnType<typeof ArrayBuffer.isView> | SerializedBuffer;
